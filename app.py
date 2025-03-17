@@ -5,12 +5,12 @@ import pandas as pd
 
 
 
-app = Flask(__name__)
+app = Flask(__name__) #INITIALIZE THE APP or creating an instance of the app
 regmodel = pickle.load(open('regmodel.pkl','rb'))
 scalar = pickle.load(open('scaling.pkl','rb'))
 
-@app.route('/')
-def home():
+@app.route('/') #DEFINE APP ROUTE
+def home(): #DEFINE LOGIC FOR THIS ROUTE
     return render_template('home.html')
 
 @app.route('/predict_api',methods=['POST'])
@@ -24,6 +24,6 @@ def predict_api():
     return jsonify(output[0])
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=True) #RUNNING THE APP
 
 
